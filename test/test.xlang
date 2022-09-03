@@ -1,1 +1,3 @@
-Addab:reta+bनमस्ते
+proc Add a b
+  ret a + b
+end

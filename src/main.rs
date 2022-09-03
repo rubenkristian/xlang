@@ -1,4 +1,8 @@
-use std::{env, fs, char};
+use std::{env, fs};
+
+use crate::parse::parsing;
+
+mod parse;
 
 fn main() {
   let args: Vec<String> = env::args().collect();
@@ -8,13 +12,8 @@ fn main() {
   if args.len() >= 2 {
     let path = args[1].to_string();
     println!("{path}");
-    let content = fs::read_to_string(path).expect("message");
-    let chars = content.chars();
+    let source = fs::read(path).expect("message");
     
-    let mut i = 0;
-    for character in chars {
-      print!("{} char {}\n", i, character);
-      i += 1;
-    }
+    parsing(&source);
   }
 }
